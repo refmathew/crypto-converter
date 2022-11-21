@@ -18,6 +18,7 @@ abstract class Currency {
 
   constructor(
     public name: string,
+    public sym: string,
     public logo: string,
   ){ }
 
@@ -27,8 +28,8 @@ abstract class Currency {
 export class Coin extends Currency { 
   rates: CoinRate;
 
-  constructor( name: string, logo: string, rates: CoinRate) {
-    super(name, logo);
+  constructor( name: string, sym: string, logo: string, rates: CoinRate) {
+    super(name, sym, logo);
     this.rates = rates;
   }
 

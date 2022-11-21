@@ -23,6 +23,7 @@ export interface Currency {
 
 export interface Coin { 
   name: string;
+  sym: string;
   logo: string;
   rates: CoinRate;
   getRate(currency: string, amount: number): number;

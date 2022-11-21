@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Coin as ICoin, CoinRate } from 'src/app/interfaces';
 
 @Component({
@@ -7,16 +7,21 @@ import { Coin as ICoin, CoinRate } from 'src/app/interfaces';
   styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
-  @Input() coins!: Array<ICoin>;
+  private _coins!: Array<ICoin>;
+  sym!: string;
 
   constructor() { 
   }
 
-  // private getRate(rate: CoinRate) {
-    // if (typeof this.bitcoin.rates === CoinRate){
+  @Input() 
+  set coins(coins: Array<ICoin>){ this._coins = coins; };
+  get coins():Array<ICoin>{ return this._coins}
 
-    // } 
-  // }
+  @Output() newItemEvent = new EventEmitter<ICoin["sym"]>();
+
+  changeCurrency(sym: string){
+    this.newItemEvent.emit(sym);
+  }
 
   ngOnInit(): void { 
     console.log(this.coins)

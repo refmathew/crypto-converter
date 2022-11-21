@@ -8,13 +8,20 @@ import { setTimeout } from 'timers/promises';
   styleUrls: ['./input-wrapper.component.scss']
 })
 export class InputWrapperComponent implements OnInit, OnChanges {
-  @Input() coins!: Array<ICoin>;
   currencies: Array<string> = ['php', 'usd'];
+  $data!: string;
+
+  private _coins!: Array<ICoin>;
+  @Input() 
+  set coins(coins: Array<ICoin>){ this._coins = coins; };
+  get coins():Array<ICoin>{ return this._coins}
 
   constructor() { }
 
   ngOnInit(): void { }
-  ngOnChanges(changes: SimpleChanges): void{
+  ngOnChanges(changes: SimpleChanges): void{ }
 
+  changeCurrency(sym: ICoin["sym"]){
+    console.log(sym)
   }
 }
