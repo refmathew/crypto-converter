@@ -1,4 +1,4 @@
-import { CoinRate, CurrencyRate } from './interfaces';
+import { CoinRate, MoneyRate } from './interfaces';
 
 // export class Currency {
   // name: string;
@@ -38,3 +38,15 @@ export class Coin extends Currency {
   }
 }
 
+export class Money extends Currency { 
+  rates: MoneyRate;
+
+  constructor( name: string, sym: string, logo: string, rates: MoneyRate) {
+    super(name, sym, logo);
+    this.rates = rates;
+  }
+
+  getRate( currency: string, amount: number): number { 
+    return this.rates[currency as keyof MoneyRate] * amount;
+  }
+}

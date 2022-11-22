@@ -1,1 +1,4 @@
-<app-input [coins]="coins" (newItemEvent)="changeCurrency($event)" ></app-input>
+<app-input 
+  [coins]="coins" 
+  curencyType="coin"
+  (onChangeCurrency)="changeCurrency($event)" ></app-input>

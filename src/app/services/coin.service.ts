@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CurrencyRate, CoinRate, Response } from '../interfaces';
+import { MoneyRate, CoinRate, Response } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'

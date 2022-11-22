@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CurrencyRate } from '../interfaces';
+import { MoneyRate } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrencyService {
-  currency!: CurrencyRate;
+  currency!: MoneyRate;
 
   constructor() { }
 
@@ -14,7 +14,7 @@ export class CurrencyService {
     binancecoin: number, 
     bitcoin: number, 
     ethereum: number, 
-    plantVsUndeadToken: number ): CurrencyRate {
+    plantVsUndeadToken: number ): MoneyRate {
 
     let rate = {
       axieInfinity,

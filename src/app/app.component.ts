@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { from, Subject } from 'rxjs';
 import { CoinService } from './services/coin.service';
 import { CurrencyService } from './services/currency.service';
-import { Coin as ICoin, CoinRate, CurrencyRate, Currency as ICurrency, Response } from './interfaces';
+import { Coin as ICoin, CoinRate, MoneyRate, Currency as ICurrency, Response } from './interfaces';
 import { Coin } from './classes';
 
 @Component({
@@ -26,8 +26,14 @@ export class AppComponent implements OnInit {
   ethereumRate!: CoinRate;
   plantVsUndeadTokenRate!: CoinRate;
   // Currencies
-  usdRate!: CurrencyRate;
-  phpRate!: CurrencyRate;
+  usdRate!: MoneyRate;
+  phpRate!: MoneyRate;
+
+  // Conversions
+  fromSym = "axs";
+  toSym = "php";
+  toValue = 3;
+   
 
   constructor( 
     private coinService: CoinService,
@@ -50,7 +56,20 @@ export class AppComponent implements OnInit {
       this.ethereum = new Coin("Ethereum", "eth", "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880", this.ethereumRate);
       this.plantVsUndeadToken = new Coin("Plant VS Undead Token", "pvu", "https://assets.coingecko.com/coins/images/17461/small/token-200x200.png?1627883446", this.plantVsUndeadTokenRate);
       this.coins = [this.axieInfinity, this.binancecoin, this.bitcoin, this.ethereum, this.plantVsUndeadToken]
-      console.log(this.coins)
     });
+  }
+
+  changeCurrency(sym: ICoin["sym"]) {
+    this.fromSym = sym;
+
+    console.log( this.convertCoin(sym) )
+  }
+
+  convertCoin(sym: ICoin["sym"]): any{
+    const toCoin = this.coins.find((coin)=>{
+      coin.sym == this.fromSym; 
+    })
+
+    return toCoin;
   }
 };
