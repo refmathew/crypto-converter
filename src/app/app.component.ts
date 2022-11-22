@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { from, Subject } from 'rxjs';
 import { CoinService } from './services/coin.service';
 import { CurrencyService } from './services/currency.service';
-import { Coin as ICoin, CoinRate, MoneyRate, Currency as ICurrency, Response } from './interfaces';
+import { Coin as ICoin, CoinRate, MoneyRate } from './interfaces';
 import { Coin } from './classes';
 
 @Component({
@@ -61,15 +60,11 @@ export class AppComponent implements OnInit {
 
   changeCurrency(sym: ICoin["sym"]) {
     this.fromSym = sym;
-
-    console.log( this.convertCoin(sym) )
+    this.convertCoin(sym)
   }
 
   convertCoin(sym: ICoin["sym"]): any{
-    const toCoin = this.coins.find((coin)=>{
-      coin.sym == this.fromSym; 
-    })
-
-    return toCoin;
+    const toCoin = this.coins.find( coin => coin["sym"] === this.fromSym )
+    this.toValue = toCoin!.getRate(this.toSym, 1);
   }
 };
