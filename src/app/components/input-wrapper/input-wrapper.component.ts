@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { Coin as ICoin } from 'src/app/interfaces';
+import { Coin as ICoin, Money as IMoney } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-input-wrapper',
@@ -8,10 +8,14 @@ import { Coin as ICoin } from 'src/app/interfaces';
 })
 export class InputWrapperComponent implements OnInit {
   private _coins!: Array<ICoin>;
+  private _moneyy!: Array<IMoney>;
 
   @Input() 
   set coins(coins: Array<ICoin>){ this._coins = coins; };
-  get coins():Array<ICoin>{ return this._coins}
+  get coins():Array<ICoin>{ return this._coins};
+  @Input() 
+  set moneyy(moneyy: Array<IMoney>){ this._moneyy = moneyy; };
+  get moneyy():Array<IMoney>{ return this._moneyy};
 
   @Output() onChangeCurrency = new EventEmitter<ICoin["sym"]>();
 
@@ -21,5 +25,6 @@ export class InputWrapperComponent implements OnInit {
 
   changeCurrency(sym: ICoin["sym"]){
     this.onChangeCurrency.emit(sym);
+    console.log(sym)
   }
 }

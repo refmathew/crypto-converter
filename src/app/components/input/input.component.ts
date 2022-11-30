@@ -1,21 +1,25 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Coin as ICoin } from 'src/app/interfaces';
+import { Coin as ICoin, Money as IMoney } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
-})
+}) 
+
 export class InputComponent implements OnInit {
-  private _coins!: Array<ICoin>;
+  private _currencies!: Array<ICoin> | Array<IMoney>;
+  private _currencyType!: string;
 
   constructor() { 
   }
 
-  @Input() currencyType!: string;
   @Input() 
-  set coins(coins: Array<ICoin>) { this._coins = coins };
-  get coins():Array<ICoin> { return this._coins };
+  set currencies(currencies: Array<ICoin> | Array<IMoney>) { this._currencies = currencies };
+  get currencies():Array<ICoin> | Array<IMoney> { return this._currencies };
+  @Input()
+  set currencyType(currencyType: string) { this._currencyType = currencyType };
+  get currencyType(): string { return this._currencyType };
 
   @Output() onChangeCurrency = new EventEmitter<ICoin["sym"]>();
 

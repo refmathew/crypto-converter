@@ -1,6 +1,4 @@
-<div class="input">
-  <input type="number">
-  <select id="currency" name="currency"  #currency (change)="changeCurrency(currency.value)">
-    <option *ngFor="let coin of coins" [value]="coin.sym">{{ coin.name }}</option>
-  </select>
-</div>
+<input type="number" class="converter__amount">
+<select id="currency" name="currency" #currency (change)="changeCurrency(currency.value)" class="converter__type">
+  <option *ngFor="let currency of currencies" [value]="currency.sym">{{ currency.name }}</option>
+</select>

@@ -1,0 +1,13 @@
+@use "abstracts" as abs;
+
+:host { 
+    text-align: center;
+
+    .rate__from {
+       @include abs.mix-font("Open sans", 16, 18); 
+    }
+
+    .rate__to {
+       @include abs.mix-font("Open sans", 18, 24, 700); 
+    }
+}

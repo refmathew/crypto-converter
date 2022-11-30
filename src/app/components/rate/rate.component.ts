@@ -6,6 +6,7 @@ import { Coin as ICoin } from 'src/app/interfaces';
   templateUrl: './rate.component.html',
   styleUrls: ['./rate.component.scss']
 })
+
 export class RateComponent implements OnInit {
   private _fromSym!: ICoin["sym"];
   private _toSym!: ICoin["sym"];
@@ -23,10 +24,7 @@ export class RateComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log("hey")
-  }
-
+  ngOnInit(): void { }
 }
 
 // identify if there is a change on an input and emit what the amountToConvert and its Sym is

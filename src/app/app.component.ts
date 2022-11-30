@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CoinService } from './services/coin.service';
 import { CurrencyService } from './services/currency.service';
-import { Coin as ICoin, CoinRate, MoneyRate } from './interfaces';
-import { Coin } from './classes';
+import { Coin as ICoin, Money as IMoney, CoinRate, MoneyRate } from './interfaces';
+import { Coin, Money } from './classes';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +11,18 @@ import { Coin } from './classes';
 })
 
 export class AppComponent implements OnInit {
+  title: "crypto-converter"
+
   axieInfinity!: ICoin;
   binancecoin!: ICoin;
   bitcoin!: ICoin;
   ethereum!: ICoin;
   plantVsUndeadToken!: ICoin;
   coins!: Array<ICoin>;
+
+  usd!: IMoney;
+  php!: IMoney;
+  moneyy!: Array<IMoney>;
 
   // Coins
   axieInfinityRate!: CoinRate;
@@ -32,7 +38,6 @@ export class AppComponent implements OnInit {
   fromSym = "axs";
   toSym = "php";
   toValue = 3;
-   
 
   constructor( 
     private coinService: CoinService,
@@ -55,6 +60,12 @@ export class AppComponent implements OnInit {
       this.ethereum = new Coin("Ethereum", "eth", "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880", this.ethereumRate);
       this.plantVsUndeadToken = new Coin("Plant VS Undead Token", "pvu", "https://assets.coingecko.com/coins/images/17461/small/token-200x200.png?1627883446", this.plantVsUndeadTokenRate);
       this.coins = [this.axieInfinity, this.binancecoin, this.bitcoin, this.ethereum, this.plantVsUndeadToken]
+
+      this.usd = new Money("US Dollar", "usd", "../../../assets/images/dollar-symbol.png", this.usdRate);
+      this.php = new Money("Philippine Peso", "php", "../../../assets/images/philippine-peso.png", this.phpRate);
+      this.moneyy = [this.usd, this.php];
+
+      console.log(this.usd.getRate("binancecoin", 1), this.usd.rates.binancecoin)
     });
   }
 
