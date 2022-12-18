@@ -42,7 +42,7 @@ $maxWidthPx: pixelfyNum($maxWidth);
 // we only care about resizing in between the minWidth and the maxWidth
 $rangeVw : calc($maxWidth - $minWidth);
 
-@function clampify($min, $max){
+@function clampify($min, $max) {
   // we only care about resizing in between the $min and $max
   $rangeVal : calc($max - $min);
 

@@ -3,11 +3,11 @@ export interface Response {
 }
 
 export interface MoneyRate{
-  bitcoin: number;
-  ethereum: number;
-  binancecoin: number;
-  axieInfinity: number;
-  plantVsUndeadToken: number;
+  btc: number;
+  eth: number;
+  bnb: number;
+  axs: number;
+  pvu: number;
 }
 
 export interface CoinRate { 

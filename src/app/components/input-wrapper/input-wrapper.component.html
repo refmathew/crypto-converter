@@ -1,9 +1,17 @@
 <app-input 
   [currencies]="coins" 
+  [otherCurrencies]="moneyy"
   [currencyType]="'coin'"
-  (onChangeCurrency)="changeCurrency($event)" ></app-input>
+  [currentCurrencyType]="currentCurrencyType"
+  [currentSym]="currentSym"
+  [currentAmount]="currentAmount"
+  (currencyChange)="onCurrencyChange($event)" ></app-input>
 
 <app-input 
   [currencies]="moneyy" 
+  [otherCurrencies]="coins"
   [currencyType]="'money'"
-  (onChangeCurrency)="changeCurrency($event)" ></app-input>
+  [currentCurrencyType]="currentCurrencyType"
+  [currentSym]="currentSym"
+  [currentAmount]="currentAmount"
+  (currencyChange)="onCurrencyChange($event)" ></app-input>

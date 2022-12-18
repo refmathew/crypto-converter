@@ -30,14 +30,15 @@ export class AppComponent implements OnInit {
   bitcoinRate!: CoinRate;
   ethereumRate!: CoinRate;
   plantVsUndeadTokenRate!: CoinRate;
+
   // Currencies
   usdRate!: MoneyRate;
   phpRate!: MoneyRate;
 
   // Conversions
-  fromSym = "axs";
-  toSym = "php";
-  toValue = 3;
+  fromSym;
+  toSym;
+  toValue;
 
   constructor( 
     private coinService: CoinService,
@@ -58,14 +59,14 @@ export class AppComponent implements OnInit {
       this.binancecoin = new Coin("Binance Coin", "bnb", "https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png?1644979850", this.binancecoinRate);
       this.bitcoin = new Coin("Bitcoin", "btc", "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579", this.bitcoinRate);
       this.ethereum = new Coin("Ethereum", "eth", "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880", this.ethereumRate);
-      this.plantVsUndeadToken = new Coin("Plant VS Undead Token", "pvu", "https://assets.coingecko.com/coins/images/17461/small/token-200x200.png?1627883446", this.plantVsUndeadTokenRate);
+      this.plantVsUndeadToken = new Coin("Plant vs Undead Token", "pvu", "https://assets.coingecko.com/coins/images/17461/small/token-200x200.png?1627883446", this.plantVsUndeadTokenRate);
       this.coins = [this.axieInfinity, this.binancecoin, this.bitcoin, this.ethereum, this.plantVsUndeadToken]
 
-      this.usd = new Money("US Dollar", "usd", "../../../assets/images/dollar-symbol.png", this.usdRate);
-      this.php = new Money("Philippine Peso", "php", "../../../assets/images/philippine-peso.png", this.phpRate);
+      this.usd = new Money("US Dollar", "usd", "https://www.xe.com/static-images/usd.static.e8b657d1161a08a32415d284a8e1dc89.svg", this.usdRate);
+      this.php = new Money("Philippine Peso", "php", "https://www.xe.com/static-images/php.static.1e99a7e13fa0f9d28bd21405a107b9ab.svg", this.phpRate);
       this.moneyy = [this.usd, this.php];
 
-      console.log(this.usd.getRate("binancecoin", 1), this.usd.rates.binancecoin)
+      console.log(this.plantVsUndeadToken.getRate("usd", 1))
     });
   }
 

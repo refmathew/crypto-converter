@@ -10,6 +10,18 @@ export class InputWrapperComponent implements OnInit {
   private _coins!: Array<ICoin>;
   private _moneyy!: Array<IMoney>;
 
+  // Initial conversion
+  currentCurrencyType: "";
+  currentSym: "usd";
+  currentAmount: 1;
+
+
+  constructor() { }
+
+
+  ngOnInit(): void { }
+
+
   @Input() 
   set coins(coins: Array<ICoin>){ this._coins = coins; };
   get coins():Array<ICoin>{ return this._coins};
@@ -17,14 +29,10 @@ export class InputWrapperComponent implements OnInit {
   set moneyy(moneyy: Array<IMoney>){ this._moneyy = moneyy; };
   get moneyy():Array<IMoney>{ return this._moneyy};
 
-  @Output() onChangeCurrency = new EventEmitter<ICoin["sym"]>();
 
-  constructor() { }
-
-  ngOnInit(): void { }
-
-  changeCurrency(sym: ICoin["sym"]){
-    this.onChangeCurrency.emit(sym);
-    console.log(sym)
+  onCurrencyChange(res){
+    this.currentCurrencyType = res['currencyType'];
+    this.currentSym = res['sym'];
+    this.currentAmount = res['amount'];
   }
 }

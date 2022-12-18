@@ -1,5 +1,6 @@
 @use "abstracts" as abs;
 
 :host {
-    @include abs.mix-flex(column, center);
+    @include abs.mix-flex(column, center, center);
+    gap: abs.fnc-clampify(24, 36);
 }

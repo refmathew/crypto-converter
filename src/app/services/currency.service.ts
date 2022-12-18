@@ -9,26 +9,15 @@ export class CurrencyService {
 
   constructor() { }
 
-  getRate( 
-    axieInfinity: number, 
-    binancecoin: number, 
-    bitcoin: number, 
-    ethereum: number, 
-    plantVsUndeadToken: number ): MoneyRate {
+  getRate( axs: number, bnb: number, btc: number, eth: number, pvu: number ): MoneyRate {
 
-    let rate = {
-      axieInfinity,
-      binancecoin,
-      bitcoin,
-      ethereum,
-      plantVsUndeadToken
-    };
+    let rate = { axs, bnb, btc, eth, pvu };
 
-    rate.axieInfinity = 1 / axieInfinity;
-    rate.binancecoin = 1 / binancecoin;
-    rate.bitcoin = 1 / bitcoin;
-    rate.ethereum = 1 / ethereum;
-    rate.plantVsUndeadToken = 1 / plantVsUndeadToken;
+    rate.axs = 1 / axs;
+    rate.bnb = 1 / bnb;
+    rate.btc = 1 / btc;
+    rate.eth= 1 / eth;
+    rate.pvu = 1 / pvu;
 
     this.currency = rate;
     return this.currency;
